@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from "./Person/Person"
 
 class App extends Component {
@@ -41,16 +41,8 @@ class App extends Component {
   }
 
   render() {
-    const style={
-      backgroundColor:'green',
-      color:'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
-
     let person = null;
+    let btnClass = '';
 
     if(this.state.showPerson){
       person = (
@@ -67,22 +59,22 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = 'red';
+      btnClass=classes.Red;
     }
 
-    let classes = ['bold'];
+    let assignedClasses = ['bold'];
     if (this.state.persons.length <= 1){
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
 
-    classes = classes.join(' ');
+    assignedClasses = assignedClasses.join(' ');
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, Im a react App</h1>
-        <p className={classes}>This is really working!</p>
+        <p className={assignedClasses}>This is really working!</p>
         <button
-          style={style}
+          className={btnClass}
           onClick={this.togglePersonHandler}
         >Toggle Person</button>
         {person}
